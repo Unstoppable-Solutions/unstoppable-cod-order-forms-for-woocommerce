@@ -32,10 +32,6 @@ Releases are deployed to WordPress.org automatically by GitHub Actions:
 3. Commit and push `main`
 4. On GitHub, create a new **Release** tagged `vX.Y.Z` — the deploy workflow fires and pushes to WordPress.org SVN
 
-### Note on repository name
-
-This repository is `cod-order-forms` on GitHub but the plugin ships as `unstoppable-cod-order-forms-for-woocommerce` on WordPress.org. The SLUG wired into the deploy workflow uses the full WP.org slug — that's the name SVN cares about.
-
 ### CI
 
 Every push and pull request runs the official WordPress Plugin Check against the codebase.

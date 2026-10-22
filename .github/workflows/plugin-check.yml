@@ -27,10 +27,6 @@ jobs:
         uses: wordpress/plugin-check-action@v1
         with:
           build-dir: './'
-          # Repo is "cod-order-forms" on GitHub but the plugin ships as this longer
-          # slug on WordPress.org; the text domain in-code matches the WP.org slug,
-          # so tell Plugin Check that or it reports 118 bogus text-domain mismatches.
-          slug: unstoppable-cod-order-forms-for-woocommerce
           exclude-checks: |
             late_escaping
           exclude-files: |
