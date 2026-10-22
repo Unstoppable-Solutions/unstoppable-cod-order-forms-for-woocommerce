@@ -1,0 +1,758 @@
+/**
+ * Unstoppable COD Order Forms - Frontend Styles
+ *
+ * @package Unstoppable_COD_Forms
+ * @version 1.0.0
+ */
+
+/* ==========================================================================
+   CSS Variables
+   ========================================================================== */
+.ucof-form-wrapper {
+    --ucof-primary: #2271b1;
+    --ucof-primary-hover: #135e96;
+    --ucof-success: #00a32a;
+    --ucof-success-bg: #edfaef;
+    --ucof-error: #d63638;
+    --ucof-error-bg: #fcf0f1;
+    --ucof-warning: #dba617;
+    --ucof-text: #1d2327;
+    --ucof-text-light: #646970;
+    --ucof-border: #c3c4c7;
+    --ucof-border-light: #e2e4e7;
+    --ucof-bg: #ffffff;
+    --ucof-bg-light: #f6f7f7;
+    --ucof-radius: 8px;
+    --ucof-radius-sm: 4px;
+    --ucof-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --ucof-shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --ucof-transition: 0.2s ease;
+}
+
+/* ==========================================================================
+   Base Form Wrapper
+   ========================================================================== */
+.ucof-form-wrapper {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ucof-text);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.ucof-form-wrapper *,
+.ucof-form-wrapper *::before,
+.ucof-form-wrapper *::after {
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+.ucof-section {
+    background: var(--ucof-bg);
+    border: 1px solid var(--ucof-border-light);
+    border-radius: var(--ucof-radius);
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.ucof-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--ucof-border-light);
+}
+
+.ucof-step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--ucof-primary);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.ucof-section-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ucof-text);
+}
+
+/* ==========================================================================
+   Loading State
+   ========================================================================== */
+.ucof-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 40px 20px;
+    color: var(--ucof-text-light);
+}
+
+.ucof-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--ucof-border);
+    border-top-color: var(--ucof-primary);
+    border-radius: 50%;
+    animation: ucof-spin 0.8s linear infinite;
+}
+
+@keyframes ucof-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Products Grid
+   ========================================================================== */
+.ucof-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.ucof-products-grid[data-show-images="false"] {
+    grid-template-columns: 1fr;
+}
+
+.ucof-product-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--ucof-bg-light);
+    border: 2px solid transparent;
+    border-radius: var(--ucof-radius);
+    padding: 16px;
+    cursor: pointer;
+    transition: all var(--ucof-transition);
+}
+
+.ucof-product-card:hover {
+    border-color: var(--ucof-primary);
+    box-shadow: var(--ucof-shadow);
+}
+
+.ucof-product-card.selected {
+    border-color: var(--ucof-primary);
+    background: rgba(34, 113, 177, 0.05);
+}
+
+.ucof-product-card.out-of-stock {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ucof-product-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--ucof-radius-sm);
+    margin-bottom: 12px;
+    background: var(--ucof-bg);
+}
+
+.ucof-product-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: var(--ucof-text);
+}
+
+.ucof-product-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ucof-primary);
+    margin-bottom: 12px;
+}
+
+.ucof-product-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.ucof-quantity-control {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--ucof-border);
+    border-radius: var(--ucof-radius-sm);
+    overflow: hidden;
+}
+
+.ucof-qty-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: var(--ucof-bg-light);
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--ucof-text);
+    transition: background var(--ucof-transition);
+}
+
+.ucof-qty-btn:hover {
+    background: var(--ucof-border-light);
+}
+
+.ucof-qty-input {
+    width: 40px;
+    height: 32px;
+    border: none;
+    border-left: 1px solid var(--ucof-border);
+    border-right: 1px solid var(--ucof-border);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    -moz-appearance: textfield;
+}
+
+.ucof-qty-input::-webkit-outer-spin-button,
+.ucof-qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.ucof-add-btn {
+    flex: 1;
+    height: 36px;
+    border: none;
+    background: var(--ucof-primary);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: var(--ucof-radius-sm);
+    cursor: pointer;
+    transition: background var(--ucof-transition);
+}
+
+.ucof-add-btn:hover {
+    background: var(--ucof-primary-hover);
+}
+
+.ucof-product-card.selected .ucof-add-btn {
+    background: var(--ucof-success);
+}
+
+.ucof-out-of-stock-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background: var(--ucof-error-bg);
+    color: var(--ucof-error);
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: var(--ucof-radius-sm);
+}
+
+/* List view (no images) */
+.ucof-products-grid[data-show-images="false"] .ucof-product-card {
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+}
+
+.ucof-products-grid[data-show-images="false"] .ucof-product-image {
+    display: none;
+}
+
+.ucof-products-grid[data-show-images="false"] .ucof-product-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ucof-products-grid[data-show-images="false"] .ucof-product-name {
+    margin-bottom: 0;
+}
+
+.ucof-products-grid[data-show-images="false"] .ucof-product-price {
+    margin-bottom: 0;
+}
+
+.ucof-products-grid[data-show-images="false"] .ucof-product-actions {
+    margin-top: 0;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Cart Section
+   ========================================================================== */
+.ucof-cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ucof-cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ucof-cart-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--ucof-bg-light);
+    border-radius: var(--ucof-radius-sm);
+}
+
+.ucof-cart-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: var(--ucof-radius-sm);
+    background: var(--ucof-bg);
+}
+
+.ucof-cart-item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.ucof-cart-item-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ucof-cart-item-meta {
+    font-size: 13px;
+    color: var(--ucof-text-light);
+}
+
+.ucof-cart-item-total {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--ucof-primary);
+}
+
+.ucof-cart-item-remove {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--ucof-text-light);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all var(--ucof-transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ucof-cart-item-remove:hover {
+    background: var(--ucof-error-bg);
+    color: var(--ucof-error);
+}
+
+/* Cart Summary */
+.ucof-cart-summary {
+    border-top: 1px solid var(--ucof-border-light);
+    padding-top: 16px;
+}
+
+.ucof-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.ucof-summary-row .ucof-label {
+    color: var(--ucof-text-light);
+    font-size: 14px;
+}
+
+.ucof-summary-row .ucof-value {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.ucof-summary-row.ucof-total {
+    border-top: 2px solid var(--ucof-border-light);
+    margin-top: 8px;
+    padding-top: 16px;
+}
+
+.ucof-summary-row.ucof-total .ucof-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ucof-text);
+}
+
+.ucof-summary-row.ucof-total .ucof-value {
+    font-size: 20px;
+    color: var(--ucof-primary);
+}
+
+.ucof-delivery-pending {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ucof-text-light);
+    font-style: italic;
+}
+
+.ucof-free-delivery {
+    color: var(--ucof-success) !important;
+}
+
+/* ==========================================================================
+   Form Fields
+   ========================================================================== */
+.ucof-fields-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.ucof-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ucof-field-full {
+    grid-column: 1 / -1;
+}
+
+.ucof-field-half {
+    grid-column: span 1;
+}
+
+.ucof-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ucof-text);
+}
+
+.ucof-required {
+    color: var(--ucof-error);
+}
+
+.ucof-optional {
+    font-weight: 400;
+    color: var(--ucof-text-light);
+    font-size: 12px;
+}
+
+.ucof-field input[type="text"],
+.ucof-field input[type="tel"],
+.ucof-field input[type="email"],
+.ucof-field select,
+.ucof-field textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 1px solid var(--ucof-border);
+    border-radius: var(--ucof-radius-sm);
+    background: var(--ucof-bg);
+    color: var(--ucof-text);
+    transition: border-color var(--ucof-transition), box-shadow var(--ucof-transition);
+}
+
+.ucof-field input:focus,
+.ucof-field select:focus,
+.ucof-field textarea:focus {
+    outline: none;
+    border-color: var(--ucof-primary);
+    box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.15);
+}
+
+.ucof-field input.error,
+.ucof-field select.error,
+.ucof-field textarea.error {
+    border-color: var(--ucof-error);
+}
+
+.ucof-field textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.ucof-field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23646970' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+}
+
+.ucof-field-error {
+    font-size: 12px;
+    color: var(--ucof-error);
+    display: none;
+}
+
+.ucof-field.has-error .ucof-field-error {
+    display: block;
+}
+
+/* ==========================================================================
+   Submit Section
+   ========================================================================== */
+.ucof-submit-section {
+    text-align: center;
+}
+
+.ucof-form-messages {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    border-radius: var(--ucof-radius-sm);
+    display: none;
+}
+
+.ucof-form-messages.error {
+    display: block;
+    background: var(--ucof-error-bg);
+    color: var(--ucof-error);
+    border: 1px solid var(--ucof-error);
+}
+
+.ucof-form-messages.success {
+    display: block;
+    background: var(--ucof-success-bg);
+    color: var(--ucof-success);
+    border: 1px solid var(--ucof-success);
+}
+
+.ucof-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 200px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: var(--ucof-primary);
+    border: none;
+    border-radius: var(--ucof-radius);
+    cursor: pointer;
+    transition: all var(--ucof-transition);
+}
+
+.ucof-submit-btn:hover:not(:disabled) {
+    background: var(--ucof-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--ucof-shadow-lg);
+}
+
+.ucof-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ucof-submit-btn.loading .ucof-btn-text {
+    display: none;
+}
+
+.ucof-submit-btn.loading .ucof-btn-loading {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+}
+
+.ucof-submit-btn .ucof-spinner {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+}
+
+.ucof-payment-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--ucof-text-light);
+}
+
+.ucof-cod-icon {
+    font-size: 18px;
+}
+
+/* ==========================================================================
+   Success State
+   ========================================================================== */
+.ucof-success-state {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--ucof-bg);
+    border: 1px solid var(--ucof-border-light);
+    border-radius: var(--ucof-radius);
+}
+
+.ucof-success-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    background: var(--ucof-success-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ucof-success-icon svg {
+    width: 40px;
+    height: 40px;
+    color: var(--ucof-success);
+}
+
+.ucof-success-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--ucof-text);
+}
+
+.ucof-success-message {
+    font-size: 15px;
+    color: var(--ucof-text-light);
+    margin: 0 0 24px;
+}
+
+.ucof-order-reference {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--ucof-bg-light);
+    border-radius: var(--ucof-radius);
+    margin-bottom: 16px;
+}
+
+.ucof-order-reference .ucof-label {
+    font-size: 14px;
+    color: var(--ucof-text-light);
+}
+
+.ucof-ref-number {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ucof-primary);
+}
+
+.ucof-success-note {
+    font-size: 14px;
+    color: var(--ucof-text-light);
+    margin: 0;
+}
+
+/* ==========================================================================
+   Error State
+   ========================================================================== */
+.ucof-error {
+    padding: 20px;
+    background: var(--ucof-error-bg);
+    color: var(--ucof-error);
+    border-radius: var(--ucof-radius);
+    text-align: center;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 600px) {
+    .ucof-form-wrapper {
+        padding: 12px;
+    }
+
+    .ucof-section {
+        padding: 16px;
+    }
+
+    .ucof-section-header h3 {
+        font-size: 16px;
+    }
+
+    .ucof-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .ucof-products-grid[data-show-images="false"] {
+        grid-template-columns: 1fr;
+    }
+
+    .ucof-product-card {
+        padding: 12px;
+    }
+
+    .ucof-fields-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ucof-field-half {
+        grid-column: 1;
+    }
+
+    .ucof-submit-btn {
+        width: 100%;
+    }
+
+    .ucof-cart-item {
+        flex-wrap: wrap;
+    }
+
+    .ucof-cart-item-info {
+        flex-basis: calc(100% - 90px);
+    }
+
+    .ucof-cart-item-total {
+        order: 3;
+        flex-basis: 100%;
+        text-align: right;
+        padding-top: 8px;
+    }
+}
+
+@media (max-width: 400px) {
+    .ucof-products-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   RTL Support
+   ========================================================================== */
+[dir="rtl"] .ucof-form-wrapper {
+    text-align: right;
+}
+
+[dir="rtl"] .ucof-field select {
+    background-position: left 12px center;
+    padding-left: 36px;
+    padding-right: 14px;
+}
+
+[dir="rtl"] .ucof-section-header {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .ucof-cart-item {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .ucof-summary-row {
+    flex-direction: row-reverse;
+}
