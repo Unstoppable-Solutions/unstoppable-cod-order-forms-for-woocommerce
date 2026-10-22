@@ -3,7 +3,7 @@ Contributors: paramedic192
 Tags: woocommerce, cod, cash-on-delivery, order-forms, landing-page
 Requires at least: 6.0
 Tested up to: 7.1
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 Requires PHP: 7.4
 WC requires at least: 8.0
 WC tested up to: 11.2
@@ -118,6 +118,16 @@ When configured with a Google Apps Script URL, order data is sent to your Google
 * **Privacy Policy:** https://policies.google.com/privacy
 
 == Changelog ==
+
+= 1.1.5 =
+* Updated: WooCommerce tested up to 11.2
+
+= 1.1.4 =
+* Added: Category picker dropdown in form editor
+* Added: All form settings now exposed in admin UI
+* Fixed: Inline scripts properly enqueued via wp_add_inline_script
+* Fixed: Inline styles properly enqueued via wp_add_inline_style
+* Fixed: Main class renamed to UCOF_Main for proper prefixing
 
 = 1.1.1 =
 * Removed: Custom CSS feature (not permitted per WordPress.org guidelines)

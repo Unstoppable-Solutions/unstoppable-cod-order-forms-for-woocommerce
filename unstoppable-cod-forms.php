@@ -3,7 +3,7 @@
  * Plugin Name: Unstoppable COD Order Forms for WooCommerce
  * Plugin URI: https://unstoppablesolutions.app/plugins/unstoppable-cod-forms
  * Description: Create high-converting COD order forms with delivery zone calculators, Google Sheets sync, and marketing pixel integration for cash-on-delivery markets.
- * Version: 1.1.4
+ * Version: 1.1.5
  * Author: Unstoppable Solutions
  * Author URI: https://unstoppablesolutions.app
  * License: GPL-2.0-or-later
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( 'UCOF_VERSION', '1.1.4' );
+define( 'UCOF_VERSION', '1.1.5' );
 define( 'UCOF_PLUGIN_FILE', __FILE__ );
 define( 'UCOF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'UCOF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
